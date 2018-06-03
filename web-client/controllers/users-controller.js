@@ -7,8 +7,9 @@ function UsersController($scope, $http, toastr, $window){
         });
     };
 
-    get_users();
+  
 
+    get_users();
     $scope.edit_user = function(user){
         $http.put('/rest/v1/user/edit', user, config).then(function(response){
             get_users();

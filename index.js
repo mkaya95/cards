@@ -60,6 +60,13 @@ app.post('/login', function(request, response){
   });
 
   /* Users CRUD */
+  app.get('/rest/v1/users_count', function(request, response){
+    db.collection('users').find().toArray((err, users) => {
+      if (err) return console.log(err);
+      response.setHeader('Content-Type', 'application/json');
+      response.send({'user_count':users.length});
+    })
+  });
   app.get('/rest/v1/users', function(request, response){
     db.collection('users').find().toArray((err, users) => {
       if (err) return console.log(err);
@@ -94,6 +101,13 @@ app.post('/login', function(request, response){
 
 
  /* Groups CRUD */
+  app.get('/rest/v1/groups_count', function(request, response){
+      db.collection('groups').find().toArray((err, groups) => {
+        if (err) return console.log(err);
+        response.setHeader('Content-Type', 'application/json');
+        response.send({'groups_count':groups.length});
+      })
+  });
   app.get('/rest/v1/groups', function(request, response){
     db.collection('groups').find().toArray((err, groups) => {
       if (err) return console.log(err);
