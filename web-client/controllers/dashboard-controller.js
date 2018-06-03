@@ -1,12 +1,7 @@
-function DashboardController($scope, $rootScope, $http){
+function DashboardController($scope, $rootScope, $http, $window){
     console.log("Hello from dashboard controller");
 
-    var config = {headers:  {
-      'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
-      'Accept': 'application/json;odata=verbose',
-      "JWT" : localStorage.getItem('user')
-      }
-    };
+    var config = $window.config;
 
     var init = function(){
       console.log($rootScope);

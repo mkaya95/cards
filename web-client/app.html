@@ -2,7 +2,7 @@
     <div class="sidebar" data-color="red" data-image="../assets/img/sidebar-1.jpg">
         <div class="logo">
             <a href="#" class="simple-text">
-                <img src="assets/img/logo1.png">
+                ACCESS Control 
             </a>
         </div>
         <div class="sidebar-wrapper">
@@ -11,6 +11,12 @@
                     <a href="#!dashboard" ng-click="menuItemClicked()">
                         <i class="material-icons">dashboard</i>
                         <p>Dashboard</p>
+                    </a>
+                </li>
+                <li ng-class="getClass('/users')">
+                    <a href="#!users" ng-click="menuItemClicked()">
+                        <i class="material-icons">person</i>
+                        <p>Users List</p>
                     </a>
                 </li>
                 <li ng-class="getClass('/user')">

@@ -85,6 +85,13 @@ app.post('/login', function(request, response){
     })
   });
 
+  app.delete('/rest/v1/user/delete/:id', function(request, response){
+    db.collection('users').findOneAndDelete({_id: new MongoId(request.params.id)}, (err, result) => {
+      if (err) return res.send(500, err)
+      response.send('OK');
+    })
+  });
+
 
 MongoClient.connect('mongodb://localhost:27017/cards-app', (err, database) => {
   if (err) return console.log(err)

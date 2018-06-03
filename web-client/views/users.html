@@ -3,7 +3,6 @@
         <div class="card">
             <div class="card-header" data-background-color="purple">
                 <h4 class="title">Users</h4>
-                <p class="category">Here is a subtitle for this table</p>
             </div>
             <div class="card-content table-responsive">
                 <table class="table">
@@ -11,12 +10,18 @@
                         <th>Full Name</th>
                         <th>Email</th>
                         <th>Username</th>
+                        <th>Process</th>
                     </thead>
                     <tbody>
                         <tr ng-repeat="x in names">
                             <td><span editable-text="x.full_name" onbeforesave="edit_user(x)">{{ x.full_name }}</span></td>
                             <td><span editable-text="x.email" onbeforesave="edit_user(x)">{{ x.email }}</span></td>
                             <td><span editable-text="x.username" onbeforesave="edit_user(x)">{{ x.username }}</span></td>
+                            <td class="td-actions text-right">
+                                    <button ng-click="delete_user(x._id)" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
