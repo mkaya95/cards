@@ -9,8 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular-toastr": "^2.1.1",
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "mongodb": "^3.0.9",
+    "jsonwebtoken": "^8.2.2",
+    "mongodb": "^2.2.35",
     "nodemon": "^1.17.5"
   }
 }

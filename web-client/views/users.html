@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Users</h4>
+                <p class="category">Here is a subtitle for this table</p>
+            </div>
+            <div class="card-content table-responsive">
+                <table class="table">
+                    <thead class="text-primary">
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in names">
+                            <td><span editable-text="x.full_name" onbeforesave="edit_user(x)">{{ x.full_name }}</span></td>
+                            <td><span editable-text="x.email" onbeforesave="edit_user(x)">{{ x.email }}</span></td>
+                            <td><span editable-text="x.username" onbeforesave="edit_user(x)">{{ x.username }}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="red">
+                <h4 class="title">Add User</h4>
+            </div>
+            <div class="card-content">
+                <form name="add_user_form">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Full Name</label>
+                                <input name="full_name" class="form-control" ng-model="model.full_name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Username</label>
+                                <input name="username" class="form-control" ng-model="model.username" required minlength="4">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Email address</label>
+                                <input type="email" name="email" ng-model="model.email" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Password</label>
+                                    <input type="password" name="password" ng-model="model.password" class="form-control" required>
+                                </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right"  ng-click="add_user(model)">Add User</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
