@@ -16,7 +16,7 @@
                         <tr ng-repeat="x in groups">
                             <td><span editable-text="x.name" onbeforesave="edit_group(x)">{{ x.name }}</span></td>
                             <td><span editable-text="x.type" onbeforesave="edit_group(x)">{{ x.type }}</span></td>
-                            <td><span editable-text="x.status" onbeforesave="edit_group(x)">{{ x.status }}</span></td>
+                            <td><span editable-text="x.status" >{{ x.status }}</span></td>
                             <td class="td-actions text-right">
                                     <button ng-click="delete_group(x._id)" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">
                                         <i class="material-icons">close</i>
@@ -38,13 +38,13 @@
             <div class="card-content">
                 <form name="add_user_form">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <div class="form-group label-floating">
                                 <label class="control-label">Name</label>
                                 <input name="name" class="form-control" ng-model="model.name" required>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <div class="form-group label-floating">
                                 <label class="control-label">Type</label>
                                 <input name="type" class="form-control" ng-model="model.type" required minlength="4">
@@ -53,7 +53,10 @@
                         <div class="col-md-3">
                             <div class="form-group label-floating">
                                 <label class="control-label">Status</label>
-                                <input type="name" name="status" ng-model="model.status" class="form-control" required>
+                                <select class="form-control" name="status" ng-model="model.status">
+                                    <option value="ACTIVE">ACTIVE</option>
+                                    <option value="INACTIVE">INACTIVE</option>
+                                </select>
                             </div>
                         </div>
                     </div>

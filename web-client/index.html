@@ -48,7 +48,6 @@
     var app = angular.module("cards-app", ["ngRoute", "xeditable", "ui.bootstrap", 'ngAnimate', 'toastr']);
     
     app.controller('dashboardController', DashboardController);
-    app.controller('userController', UserController);
     app.controller('tableController', TableController);
     app.controller('usersController', UsersController);
     app.controller('groupsController', GroupsController);
@@ -71,10 +70,6 @@
         .when("/dashboard", {
             templateUrl : "views/dashboard.html",
             controller : "dashboardController"
-        })
-        .when("/user", {
-            templateUrl : "views/user.html",
-            controller : "userController"
         })
         .when("/users", {
             templateUrl : "views/users.html",

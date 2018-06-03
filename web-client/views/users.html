@@ -38,13 +38,13 @@
             <div class="card-content">
                 <form name="add_user_form">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-7">
                             <div class="form-group label-floating">
                                 <label class="control-label">Full Name</label>
                                 <input name="full_name" class="form-control" ng-model="model.full_name" required>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-5">
                             <div class="form-group label-floating">
                                 <label class="control-label">Username</label>
                                 <input name="username" class="form-control" ng-model="model.username" required minlength="4">
@@ -61,11 +61,11 @@
                                     <label class="control-label">User Groups</label>
                                     <select class="form-control" ng-controller="groupsController">
                                             <option ng-repeat="x in groups" value="{{x._id}}">{{x.name}}</option>
-                                        </select>
+                                    </select>
                                 </div>
                         </div>
                        
-                        <div class="col-md-3">
+                        <div class="col-md-5">
                                 <div class="form-group label-floating">
                                     <label class="control-label">Password</label>
                                     <input type="password" name="password" ng-model="model.password" class="form-control" required>
