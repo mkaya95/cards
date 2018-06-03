@@ -59,7 +59,7 @@ app.post('/login', function(request, response){
     });
   });
 
-
+  /* Users CRUD */
   app.get('/rest/v1/users', function(request, response){
     db.collection('users').find().toArray((err, users) => {
       if (err) return console.log(err);
@@ -87,6 +87,39 @@ app.post('/login', function(request, response){
 
   app.delete('/rest/v1/user/delete/:id', function(request, response){
     db.collection('users').findOneAndDelete({_id: new MongoId(request.params.id)}, (err, result) => {
+      if (err) return res.send(500, err)
+      response.send('OK');
+    })
+  });
+
+
+ /* Groups CRUD */
+  app.get('/rest/v1/groups', function(request, response){
+    db.collection('groups').find().toArray((err, groups) => {
+      if (err) return console.log(err);
+      response.setHeader('Content-Type', 'application/json');
+      response.send(groups);
+    })
+  });
+  app.post('/rest/v1/groups/add_group', function(request, response){
+    db.collection('groups').save(request.body, (err, result) => {
+      if (err) return console.log(err);
+      response.send('OK');
+    })
+  });
+
+  app.put('/rest/v1/groups/edit', function(request, response){
+    groups = request.body;
+    db.collection('groups').findOneAndUpdate( {_id: new MongoId(groups._id) }, {
+      $set: {name: groups.name, type: groups.type, status: groups.status}
+    }, (err, result) => {
+      if (err) return res.send(err);
+      response.send('OK');
+    })
+  });
+
+  app.delete('/rest/v1/groups/delete/:id', function(request, response){
+    db.collection('groups').findOneAndDelete({_id: new MongoId(request.params.id)}, (err, result) => {
       if (err) return res.send(500, err)
       response.send('OK');
     })

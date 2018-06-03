@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Groups</h4>
+            </div>
+            <div class="card-content table-responsive">
+                <table class="table">
+                    <thead class="text-primary">
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Process</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in names">
+                            <td><span editable-text="x.name" onbeforesave="edit_group(x)">{{ x.name }}</span></td>
+                            <td><span editable-text="x.type" onbeforesave="edit_group(x)">{{ x.type }}</span></td>
+                            <td><span editable-text="x.status" onbeforesave="edit_group(x)">{{ x.status }}</span></td>
+                            <td class="td-actions text-right">
+                                    <button ng-click="delete_group(x._id)" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-lg">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="red">
+                <h4 class="title">Add Group</h4>
+            </div>
+            <div class="card-content">
+                <form name="add_user_form">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Name</label>
+                                <input name="name" class="form-control" ng-model="model.name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Type</label>
+                                <input name="type" class="form-control" ng-model="model.type" required minlength="4">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Status</label>
+                                <input type="name" name="status" ng-model="model.status" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right"  ng-click="add_group(model)">Add Group</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
