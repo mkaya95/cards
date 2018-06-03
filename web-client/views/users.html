@@ -44,18 +44,27 @@
                                 <input name="full_name" class="form-control" ng-model="model.full_name" required>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <div class="form-group label-floating">
                                 <label class="control-label">Username</label>
                                 <input name="username" class="form-control" ng-model="model.username" required minlength="4">
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="form-group label-floating">
                                 <label class="control-label">Email address</label>
                                 <input type="email" name="email" ng-model="model.email" class="form-control" required>
                             </div>
                         </div>
+                        <div class="col-md-3">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">User Groups</label>
+                                    <select class="form-control" ng-controller="groupsController">
+                                            <option ng-repeat="x in groups" value="{{x._id}}">{{x.name}}</option>
+                                        </select>
+                                </div>
+                        </div>
+                       
                         <div class="col-md-3">
                                 <div class="form-group label-floating">
                                     <label class="control-label">Password</label>

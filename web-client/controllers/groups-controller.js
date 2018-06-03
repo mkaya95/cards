@@ -3,7 +3,7 @@ function GroupsController($scope, $http, toastr, $window){
 
     var get_groups = function (){
         $http.get('/rest/v1/groups', config).then(function(response){
-            $scope.names = response.data;
+            $scope.groups = response.data;
         });
     };
 

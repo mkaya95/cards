@@ -13,7 +13,7 @@
                         <th>Process</th>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="x in names">
+                        <tr ng-repeat="x in groups">
                             <td><span editable-text="x.name" onbeforesave="edit_group(x)">{{ x.name }}</span></td>
                             <td><span editable-text="x.type" onbeforesave="edit_group(x)">{{ x.type }}</span></td>
                             <td><span editable-text="x.status" onbeforesave="edit_group(x)">{{ x.status }}</span></td>
