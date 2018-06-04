@@ -140,6 +140,47 @@ app.post('/login', function(request, response){
   });
 
 
+  /* Cards CRUD */
+  app.get('/rest/v1/cards_count', function(request, response){
+    db.collection('cards').find().toArray((err, cards) => {
+      if (err) return console.log(err);
+      response.setHeader('Content-Type', 'application/json');
+      response.send({'cards_count':cards.length});
+    })
+  });
+  app.get('/rest/v1/cards/:id', function(request, response){
+
+    db.collection('cards').find({"user_id": request.params.id}).toArray((err, cards) => {
+        if (err) return console.log(err);
+        response.setHeader('Content-Type', 'application/json');
+        response.send(cards);
+    })
+  });
+  app.post('/rest/v1/cards/add_card', function(request, response){
+   // console.log(request);
+    db.collection('cards').save(request.body, (err, result) => {
+        if (err) return console.log(err);
+        response.send('OK');
+    })
+  });
+
+  app.put('/rest/v1/cards/edit', function(request, response){
+    cards = request.body;
+    db.collection('cards').findOneAndUpdate( {_id: new MongoId(cards._id) }, {
+        $set: {name: cards.name, type: cards.type, status: cards.status}
+    }, (err, result) => {
+        if (err) return res.send(err);
+        response.send('OK');
+    })
+  });
+
+  app.delete('/rest/v1/cards/delete/:id', function(request, response){
+    db.collection('cards').findOneAndDelete({_id: new MongoId(request.params.id)}, (err, result) => {
+        if (err) return res.send(500, err)
+        response.send('OK');
+    })
+  });
+
 MongoClient.connect('mongodb://localhost:27017/cards-app', (err, database) => {
   if (err) return console.log(err)
   db = database

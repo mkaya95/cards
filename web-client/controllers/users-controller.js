@@ -1,4 +1,4 @@
-function UsersController($scope, $http, toastr, $window){
+function UsersController($scope, $http, toastr, $window, $rootScope){
     var config = $window.config;
 
     var get_users = function (){
@@ -7,7 +7,13 @@ function UsersController($scope, $http, toastr, $window){
         });
     };
 
-  
+
+    $scope.get_cards = function (){
+        $window.selected_user = $scope.selected_user;
+        $http.get('/rest/v1/cards/'+$scope.selected_user, config).then(function(response){
+            $scope.user_cards = response.data;
+        });
+    };
 
     get_users();
     $scope.edit_user = function(user){

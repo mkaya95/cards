@@ -7,6 +7,7 @@ function DashboardController($scope, $rootScope, $http, $window){
       groups_count();
       user_count();
     }
+    
     var user_count = function (){
       $http.get('/rest/v1/users_count', config).then(function(response){
           $scope.user_count = response.data.user_count;

@@ -1,0 +1,60 @@
+<div class="row" ng-controller="usersController">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">Select User</h4>
+            </div>
+            <div class="card-content">
+                <select class="form-control" name="users" ng-model="selected_user"  ng-change="get_cards()">
+                    <option ng-repeat="x in names" value="{{x._id}}">{{x.full_name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h4 class="title">User Cards</h4>
+            </div>
+            <div class="card-content table-responsive">
+                <table class="table">
+                    <thead class="text-primary">
+                        <th>Card CSN</th>
+                        <th>Date</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="y in user_cards">
+                            <td>{{y.csn}}</td>
+                            <td>{{y.date}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div ng-controller="cardsController as $ctrl" class="modal-demo">
+        <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Enter Card CSN</h3>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">CSN</label>
+                        <input name="csn" class="form-control" ng-model="model.csn" required>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+                <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+            </div>
+        </script>
+        
+
+        <button type="button" class="btn btn-default" ng-click="$ctrl.open()">Add Card</button>
+    </div>

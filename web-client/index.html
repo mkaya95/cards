@@ -42,6 +42,7 @@
 <script src="controllers/table-controller.js"></script>
 <script src="controllers/users-controller.js"></script>
 <script src="controllers/groups-controller.js"></script>
+<script src="controllers/cards-controller.js"></script>
 
 <script>
     var app = angular.module("cards-app", ["ngRoute", "xeditable", "ui.bootstrap", 'ngAnimate', 'toastr']);
@@ -50,6 +51,8 @@
     app.controller('tableController', TableController);
     app.controller('usersController', UsersController);
     app.controller('groupsController', GroupsController);
+    app.controller('cardsController', cardsController);
+
 
     var config = {
         headers:  {
@@ -77,6 +80,10 @@
         .when("/groups", {
             templateUrl : "views/groups.html",
             controller : "groupsController"
+        })
+        .when("/cards", {
+            templateUrl : "views/cards.html",
+            controller : "cardsController"
         })
         .when("/table", {
             templateUrl : "views/table.html",
